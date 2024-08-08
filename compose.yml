@@ -2,9 +2,9 @@ services:
   db:
     image: postgres:latest
     restart: unless-stopped
-    ports: 
+    ports:
       - ${WSRS_DATABASE_PORT:-5432}:5432
-    environment: 
+    environment:
       POSTGRES_USER: ${WSRS_DATABASE_USER}
       POSTGRES_PASSWORD: ${WSRS_DATABASE_PASSWORD}
       POSTGRES_DB: ${WSRS_DATABASE_NAME}
@@ -20,12 +20,12 @@ services:
       - 8081:80
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: admin
-    volumes:  
+      PGADMIN_DEFAULT_PASSWORD: password
+    volumes:
       - pgadmin:/var/lib/pgadmin
 
 volumes:
   db:
     driver: local
-  pgadmin: 
+  pgadmin:
     driver: local
